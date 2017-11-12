@@ -1,15 +1,32 @@
-import { StackNavigator } from "react-navigation"
+import React from 'react'
+import { StackNavigator } from 'react-navigation'
+import DeckList from './DeckList'
+import Deck from './Deck'
+import CreateDeck from './CreateDeck'
+import CreateCard from './CreateCard'
+import Quiz from './Quiz'
 
-export default const MainNavigator = StackNavigator({
+const MainNavigator = StackNavigator({
   Home: {
-    screen: ListDeckScreen,
+    screen: DeckList,
     path: "listDeck",
   },
-  QuizScreen: {
-    screen: QuizScreen,
+  DeckScreen: {
+    screen: Deck,
+    path: "deck/:title",
+  },
+  CreateDeckScreen: {
+    screen: CreateDeck,
+    path: "createDeck"
   },
   CreateCard: {
-    screen: CreateCardScreen,
-    path: "createCard/:deckID",
+  screen: CreateCard,
+    path: "createCard/:title",
+  },
+  QuizScreen: {
+    screen: Quiz,
+    path: "quiz/:title",
   }
 });
+
+export default MainNavigator

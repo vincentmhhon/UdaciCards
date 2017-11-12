@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green
   },
   ButtonText: {
-    fontSize: width * 1.0 / scalingFactors.normal
+    fontSize: width * 1.0
   }
 });
 
