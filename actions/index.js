@@ -15,7 +15,9 @@ export function getDecks() {
 
 export function createDeck(title) {
   return async (dispatch) => {
-    const deck = await API.createDeck(title)
+    console.log('start create Deck')
+    const deck = API.createDeck(title)
+    console.log('end create Deck')
     dispatch({
       type: CREATE_DECK,
       deck,

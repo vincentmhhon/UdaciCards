@@ -1,8 +1,6 @@
-import React, { Component } from "react"
-import { StyleSheet, Text, TouchableOpacity } from "react-native"
+import React, { Component } from 'react'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import colors from "../utils/colors"
-import { Dimensions } from 'react-native'
-let { width } = Dimensions.get("window")
 
 class Button extends Component {
   render() {
@@ -12,6 +10,7 @@ class Button extends Component {
         activeOpacity={opacity}
         onPress={this.props.onPress}
         style={[styles.Button]}
+        disabled={this.props.disabled}
       >
         <Text style={[styles.ButtonText]}>
           {this.props.children}
@@ -31,9 +30,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green
   },
   ButtonText: {
-    fontSize: width * 1.0
+    fontSize: 24
   }
 });
 
-Button.defaultProps = { disabled: false };
-export default Button;
+Button.defaultProps = { disabled: false }
+export default Button

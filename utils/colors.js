@@ -6,4 +6,6 @@ export default (colors = {
   blue: "#5DA9E9",
   gray: "#888888",
   yellow: "#d1d306",
+  purple: "#7536d3",
+  white: "#FFFFFF",
 });
