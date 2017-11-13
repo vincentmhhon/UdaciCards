@@ -2,8 +2,17 @@ import { AsyncStorage } from 'react-native'
 const DECK_STORAGE_KEY = 'UDACICARDS:DECKS'
 
 export function getDecks () {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY)
-    .then(JSON.parse)
+  try {
+    AsyncStorage.getItem(DECK_STORAGE_KEY)
+      .then((decks) => {
+        console.log(decks)
+        return decks !== null ? JSON.parse(decks) : {}
+      })
+  }
+  catch (error) {
+    console.log(error)
+    return {}
+  }
 }
 
 export function createDeck (title) {
@@ -16,8 +25,7 @@ export function createDeck (title) {
 }
 
 export function createCard (title, card) {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY)
-    .then(JSON.parse)
+  return this.getDecks()
     .then((decks) => {
       return {
         ...decks,
