@@ -1,26 +1,24 @@
 import React from 'react'
-import { Provider } from 'react-redux' // 5.0.6
+import { Provider } from 'react-redux'
 import { View } from 'react-native'
 import MainNavigator from './components/MainNavigator'
-import { createStore, applyMiddleware } from 'redux' // 3.7.2
-import thunk from 'redux-thunk' // 2.2.0
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './reducers'
+import { Constants } from 'expo'
+import colors from './utils/colors'
 
 class App extends React.Component {
-  componentDidMount() {
-  
-  }
   
   render() {
     let store = createStore(
       rootReducer,
       applyMiddleware(thunk),
     )
-
     return (
       <Provider store={store}>
-        <View style={{flex: 1}}>
-          <MainNavigator />
+        <View style={{flex: 1, paddingTop: Constants.statusBarHeight}}>
+          <MainNavigator style={{backgroundColor: colors.tan }} />
         </View>
       </Provider>
     )
