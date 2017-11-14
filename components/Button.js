@@ -23,14 +23,13 @@ class Button extends Component {
 
 const styles = StyleSheet.create({
   Button: {
-    justifyContent: "center",
-    alignItems: "center",
     padding: 10,
     margin: 10,
-    backgroundColor: colors.green
+    backgroundColor: colors.green,
+    alignItems: 'center'
   },
   ButtonText: {
-    fontSize: 24
+    fontSize: 24,
   }
 });
 

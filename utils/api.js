@@ -6,7 +6,6 @@ export function getDecks() {
     console.log("getDecks")
     const decks = AsyncStorage.getItem(DECK_STORAGE_KEY)
       .then(decks => {
-        console.log("HHHAA " + decks)
         return decks !== null ? JSON.parse(decks) : {}
       })
 
@@ -40,7 +39,6 @@ export function createDeck(title) {
         questions: []
       }
     }
-    console.log("deck in api " + JSON.stringify(deck))
     return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
       .then(() => {
         return deck

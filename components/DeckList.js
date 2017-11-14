@@ -44,7 +44,7 @@ class DeckList extends React.Component {
         key={title}
         style={styles.deck}
         onPress={() => navigation.navigate(
-          'Deck',
+          'DeckScreen',
           { title, },
         )}
       >

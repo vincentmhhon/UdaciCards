@@ -1,29 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' // 5.0.6
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
-import "redux"; // 3.7.2
+import {  View, Text  } from 'react-native'
+import Button from './Button'
+import commonStyles from '../utils/commonStyles'
 
 class Deck extends Component {
   
   render() {
+    const { navigation, deck } = this.props
+    const { title } = deck
     return (
-      <View style={styles.deckGroup}>
-        <Text>
-          Deck
+      <View style={commonStyles.container}>
+        <Text style={commonStyles.title}>
+          {title}
         </Text>
+        <Button
+          onPress={() => navigation.navigate(
+            'CreateCard',
+            { title, },
+          )}
+        >
+          Add Card
+        </Button>
+        <Button
+          onPress={() => {
+      
+          }}
+        >
+          Start Quiz
+        </Button>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  deckGroup: {
-    flexDirection: "row",
-    alignItems: "stretch",
-    padding: 10,
-    marginBottom: 5
-  }
-})
+
 
 const mapStateToProps = (decks, {navigation}) => {
   /*
@@ -33,7 +44,13 @@ const mapStateToProps = (decks, {navigation}) => {
     navigation,
   }
   */
-  return {deck: 'a'}
+  return {
+    deck: decks[navigation.state.params['title']],
+    navigation
+    
+  }
 }
+
+
 
 export default connect(mapStateToProps)(Deck)

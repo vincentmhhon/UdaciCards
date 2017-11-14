@@ -1,12 +1,10 @@
 import React from 'react'
-import { Alert, View, Text, TextInput, StyleSheet } from 'react-native'
-import { connect } from 'react-redux' // 5.0.6
-import { NavigationActions } from 'react-navigation' // 1.0.0-beta.19
+import { Alert, View, Text, TextInput } from 'react-native'
+import { connect } from 'react-redux'
+import { NavigationActions } from 'react-navigation'
 import { createDeck } from '../actions'
 import  Button from './Button'
-import colors from '../utils/colors'
-
-import "redux"; // 3.7.2
+import commonStyles from '../utils/commonStyles'
 
 class CreateDeck extends React.Component {
   constructor(props) {
@@ -42,13 +40,13 @@ class CreateDeck extends React.Component {
     return (
 
       <View
-        style={styles.container}
+        style={commonStyles.container}
       >
-        <Text style={styles.title}>
+        <Text style={commonStyles.title}>
           Please enter title of your new Deck.
         </Text>
         <TextInput
-          style={styles.input}
+          style={commonStyles.input}
           placeholder='e.g. Grammar, Formula'
           value={title}
           onChangeText={this._onChangeTitleText}
@@ -78,24 +76,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.tan,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 20,
-    color: colors.orange,
-    textAlign: 'center',
-  },
-  input: {
-    height: 60,
-    width: 300,
-    backgroundColor: colors.white,
-    borderRadius: 5,
-  },
-})
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateDeck)
