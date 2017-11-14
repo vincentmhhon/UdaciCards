@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons' // 6.2.0
 import colors from '../utils/colors'
 
 class AddButton extends Component {

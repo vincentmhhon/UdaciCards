@@ -1,23 +1,26 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux' // 5.0.6
 import { getDecks } from '../actions'
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import colors from '../utils/colors'
 import AddButton from './AddButton'
 
+import "redux"; // 3.7.2
+
 class DeckList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {decks: {}}
+  componentWillMount() {
+    this.props.getDecks()
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getDecks()
   }
   render() {
     const { navigation } = this.props
     const { decks } = this.props
+    console.log("list decks" + JSON.stringify(decks))
+    console.log(decks.length)
+    console.log(JSON.stringify(decks).length)
       return (
         <View>
           {decks.length > 0 ? this.renderDecks(decks) : this.renderEmpty()}
@@ -46,9 +49,7 @@ class DeckList extends React.Component {
         <Text style={styles.information}>
           {title}
         </Text>
-        <Text style={styles.information}>
-          {questions.length} {questions.length !== 1 ? 'cards' : 'card'}
-        </Text>
+
       </TouchableOpacity>
     )
   }
@@ -81,10 +82,12 @@ const mapStateToProps = (decks) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    getDecks,
-  }, dispatch)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDecks: () => {
+      dispatch(getDecks())
+    }
+  }
 }
 
 const styles = StyleSheet.create({

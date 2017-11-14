@@ -1,5 +1,5 @@
 import React from 'react'
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator } from 'react-navigation' // 1.0.0-beta.19
 import DeckList from './DeckList'
 import Deck from './Deck'
 import CreateDeck from './CreateDeck'

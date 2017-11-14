@@ -1,37 +1,33 @@
-import * as API from '../utils/api'
+import * as api from '../utils/api'
 export const GET_DECKS = "GET_DECKS"
 export const CREATE_DECK = "CREATE_DECK"
 export const CREATE_CARD = "CREATE_CARD"
 
-export function getDecks() {
-  return async (dispatch) => {
-    const decks = API.getDecks()
-    dispatch({
+export const getDecks = () => (dispatch) => (
+  api
+    .getDecks()
+    .then(decks => dispatch({
       type: GET_DECKS,
       decks,
-    })
-  }
-}
+    }))
+)
 
-export function createDeck(title) {
-  return async (dispatch) => {
-    console.log('start create Deck')
-    const deck = API.createDeck(title)
-    console.log('end create Deck')
-    dispatch({
+export const createDeck = (title) => (dispatch) => (
+  api
+    .createDeck(title)
+    .then(deck => dispatch({
       type: CREATE_DECK,
-      deck,
-    })
-  }
-}
+      title,
+    }))
 
-export function createCard(title, question, answer) {
-  return async (dispatch) => {
-    const card = { question, answer }
-    const decks = API.createCard(title, card)
-    dispatch({
+)
+
+export const createCard = (title, question, answer) => (dispatch) => (
+  api
+    .createCard(title, { question, answer})
+    .then(deck => dispatch({
       type: CREATE_CARD,
-      decks,
-    })
-  }
-}
+      title,
+      card: {question, answer}
+    }))
+)

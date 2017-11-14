@@ -1,26 +1,16 @@
-import React, { Component } from "react"
-import { StyleSheet, View } from "react-native"
-import Button from "./Button"
+import React, { Component } from 'react'
+import { connect } from 'react-redux' // 5.0.6
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
+import "redux"; // 3.7.2
 
 class Deck extends Component {
-  
-  _startQuiz = () => {
-    this.props.startQuiz();
-  };
-  
-  _createCards = () => {
-    this.props.createCards();
-  };
   
   render() {
     return (
       <View style={styles.deckGroup}>
-        <Button onPress={this._startQuiz}>
-          {this.props.deck.name}: {this.props.count} cards
-        </Button>
-        <Button onPress={this._createCards}>
-          +
-        </Button>
+        <Text>
+          Deck
+        </Text>
       </View>
     );
   }
@@ -33,6 +23,17 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 5
   }
-});
+})
 
-export default Deck;
+const mapStateToProps = (decks, {navigation}) => {
+  /*
+  const title = getNavigationParam(navigation, 'title')
+  return {
+    deck: title !== null ? decks[title] : {},
+    navigation,
+  }
+  */
+  return {deck: 'a'}
+}
+
+export default connect(mapStateToProps)(Deck)

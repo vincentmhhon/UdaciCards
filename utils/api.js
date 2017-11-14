@@ -1,12 +1,44 @@
 import { AsyncStorage } from 'react-native'
-const DECK_STORAGE_KEY = 'UDACICARDS:DECKS'
+export const DECK_STORAGE_KEY = 'CARDS:DECKS'
 
-export function getDecks () {
+export function getDecks() {
   try {
-    AsyncStorage.getItem(DECK_STORAGE_KEY)
-      .then((decks) => {
-        console.log(decks)
+    console.log("getDecks")
+    const decks = AsyncStorage.getItem(DECK_STORAGE_KEY)
+      .then(decks => {
+        console.log("HHHAA " + decks)
         return decks !== null ? JSON.parse(decks) : {}
+      })
+
+    console.log(decks)
+    return decks
+  }
+  catch (error) {
+    console.log(error)
+    return {}
+  }
+}
+
+export function getDeck(title) {
+  try {
+    return this.getDecks()
+      .then(decks => {
+        return decks[title]
+      })
+  }
+  catch (error) {
+    console.log(error)
+    return {error}
+  }
+}
+
+export function createDeck(title) {
+  try {
+    const deck = {title, questions: []}
+    console.log("deck in api " + JSON.stringify(deck))
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
+      .then(() => {
+        return deck
       })
   }
   catch (error) {
@@ -15,25 +47,25 @@ export function getDecks () {
   }
 }
 
-export function createDeck (title) {
-  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
-    [title]: {
-      title,
-      questions: []
-    }
-  }))
-}
+export function createCard(title, question, answer) {
+  try {
+    const card = { question, answer }
+    const newDeck = this.getDeck(title)
+      .then(deck => {
+        return ({
+          [title]: {
+            questions: deck.questions.concat(card)
+          }
+        })
+      })
 
-export function createCard (title, card) {
-  return this.getDecks()
-    .then((decks) => {
-      return {
-        ...decks,
-        [title]: {
-          ...decks[title],
-          questions: [...decks[title].questions, card],
-        }
-      }
-    })
-    .then((decks) => AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(decks)))
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, newDeck)
+      .then(() => {
+        return newDeck
+      })
+  }
+  catch (error) {
+    console.log(error)
+    return {}
+  }
 }

@@ -1,4 +1,4 @@
-export default (colors = {
+const colors = {
   pink: "#FDA6CD",
   orange: "#d35a0b",
   green: "#65ed99",
@@ -8,4 +8,6 @@ export default (colors = {
   yellow: "#d1d306",
   purple: "#7536d3",
   white: "#FFFFFF",
-});
+};
+
+export default colors

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Alert, View, Text, TextInput, StyleSheet } from 'react-native'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
+import { connect } from 'react-redux' // 5.0.6
+import { NavigationActions } from 'react-navigation' // 1.0.0-beta.19
 import { createDeck } from '../actions'
 import  Button from './Button'
 import colors from '../utils/colors'
+
+import "redux"; // 3.7.2
 
 class CreateDeck extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class CreateDeck extends React.Component {
     const { title } = this.state
     console.log(title)
     const { decks, createDeck } = this.props
-    console.log("deck " + decks)
+    console.log("decks " + JSON.stringify(decks))
     if (title in decks) {
       Alert.alert(
         'Error',
@@ -66,13 +67,15 @@ class CreateDeck extends React.Component {
 }
 
 const mapStateToProps = (decks) => ({
-  decks,
+  decks
 })
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    createDeck,
-  }, dispatch)
+  return {
+    createDeck: (title) => {
+      dispatch(createDeck(title))
+    }
+  }
 }
 
 const styles = StyleSheet.create({
