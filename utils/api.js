@@ -34,7 +34,12 @@ export function getDeck(title) {
 
 export function createDeck(title) {
   try {
-    const deck = {title, questions: []}
+    const deck = {
+      [title]: {
+        title: title,
+        questions: []
+      }
+    }
     console.log("deck in api " + JSON.stringify(deck))
     return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
       .then(() => {
@@ -53,10 +58,11 @@ export function createCard(title, question, answer) {
     const newDeck = this.getDeck(title)
       .then(deck => {
         return ({
-          [title]: {
-            questions: deck.questions.concat(card)
-          }
-        })
+                  [title]: {
+                    title: title,
+                    questions: deck.questions.concat(card)
+                  }
+                })
       })
 
     return AsyncStorage.mergeItem(DECK_STORAGE_KEY, newDeck)

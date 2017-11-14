@@ -18,11 +18,13 @@ class DeckList extends React.Component {
   render() {
     const { navigation } = this.props
     const { decks } = this.props
-    console.log("list decks" + JSON.stringify(decks))
+    console.log("list decks e" + decks)
     console.log(decks.length)
     console.log(JSON.stringify(decks).length)
       return (
-        <View>
+        <View
+          style={styles.container}
+        >
           {decks.length > 0 ? this.renderDecks(decks) : this.renderEmpty()}
           <AddButton
             onPress={() => navigation.navigate(
@@ -48,6 +50,9 @@ class DeckList extends React.Component {
       >
         <Text style={styles.information}>
           {title}
+        </Text>
+        <Text style={styles.card}>
+          {questions.length} {questions.length > 1 ? 'cards' : 'card'}
         </Text>
 
       </TouchableOpacity>
@@ -78,7 +83,7 @@ class DeckList extends React.Component {
 
 const mapStateToProps = (decks) => {
   return {
-    decks: Object.values(decks).map(deck => deck)
+    decks: Object.keys(decks).map(key => decks[key]),
   }
 }
 
@@ -93,9 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: colors.tan,
   },
   deck: {
     backgroundColor: colors.gray,
@@ -103,11 +106,16 @@ const styles = StyleSheet.create({
     padding: 20,
     marginLeft: 10,
     marginRight: 10,
-    marginTop: 17,
+    marginTop: 20,
+    
   },
   information: {
     fontSize: 24,
     color: colors.white,
+  },
+  card: {
+    fontSize: 15,
+    color: colors.yellow,
   },
   warning: {
     fontSize: 24,
