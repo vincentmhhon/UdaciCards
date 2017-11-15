@@ -57,6 +57,7 @@ export function createCard(title, question, answer) {
       .then(deck => {
         return ({
           [title]: {
+            title: title,
             questions: deck.questions.concat(card)
           }
         })
