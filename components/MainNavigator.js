@@ -19,7 +19,7 @@ const MainNavigator = StackNavigator({
     screen: CreateDeck,
     path: "createDeck"
   },
-  CreateCard: {
+  CreateCardScreen: {
   screen: CreateCard,
     path: "createCard/:title",
   },

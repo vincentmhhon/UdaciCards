@@ -16,9 +16,7 @@ class CreateDeck extends React.Component {
 
   _save = () => {
     const { title } = this.state
-    console.log(title)
     const { decks, createDeck } = this.props
-    console.log("decks " + JSON.stringify(decks))
     if (title in decks) {
       Alert.alert(
         'Error',
@@ -43,7 +41,7 @@ class CreateDeck extends React.Component {
         style={commonStyles.container}
       >
         <Text style={commonStyles.title}>
-          Please enter title of your new Deck.
+          What is the title of your new deck?
         </Text>
         <TextInput
           style={commonStyles.input}
@@ -57,7 +55,7 @@ class CreateDeck extends React.Component {
           }}
           disabled={title === ''}
         >
-          Confirm
+          Submit
         </Button>
       </View>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux' // 5.0.6
+import { connect } from 'react-redux'
 import {  View, Text  } from 'react-native'
 import Button from './Button'
 import commonStyles from '../utils/commonStyles'
@@ -16,7 +16,7 @@ class Deck extends Component {
         </Text>
         <Button
           onPress={() => navigation.navigate(
-            'CreateCard',
+            'CreateCardScreen',
             { title, },
           )}
         >
@@ -34,23 +34,11 @@ class Deck extends Component {
   }
 }
 
-
-
 const mapStateToProps = (decks, {navigation}) => {
-  /*
-  const title = getNavigationParam(navigation, 'title')
-  return {
-    deck: title !== null ? decks[title] : {},
-    navigation,
-  }
-  */
   return {
     deck: decks[navigation.state.params['title']],
     navigation
-    
   }
 }
-
-
 
 export default connect(mapStateToProps)(Deck)
