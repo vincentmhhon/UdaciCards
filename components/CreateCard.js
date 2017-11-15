@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TextInput } from 'react-native'
-import { connect } from 'react-redux' 
+import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { createCard } from '../actions'
 import  Button from './Button'
