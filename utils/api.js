@@ -56,14 +56,13 @@ export function createCard(title, question, answer) {
     const newDeck = this.getDeck(title)
       .then(deck => {
         return ({
-                  [title]: {
-                    title: title,
-                    questions: deck.questions.concat(card)
-                  }
-                })
+          [title]: {
+            questions: deck.questions.concat(card)
+          }
+        })
       })
 
-    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, newDeck)
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeck))
       .then(() => {
         return newDeck
       })
