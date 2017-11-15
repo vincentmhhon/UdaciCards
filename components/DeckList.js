@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux' // 5.0.6
+import { connect } from 'react-redux'
 import { getDecks } from '../actions'
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Animated } from 'react-native'
 import colors from '../utils/colors'
 import AddButton from './AddButton'
 
@@ -13,6 +13,7 @@ class DeckList extends React.Component {
   }
 
   componentDidMount() {
+    this.animatedValue = new Animated.Value(1);
     this.props.getDecks()
   }
   render() {
@@ -27,10 +28,12 @@ class DeckList extends React.Component {
         >
           {decks.length > 0 ? this.renderDecks(decks) : this.renderEmpty()}
           <AddButton
-            onPress={() => navigation.navigate(
-              'CreateDeckScreen',
-              {},
-            )}
+            onPress={() => {
+              navigation.navigate(
+                'CreateDeckScreen',
+                {},
+              )
+            }}
           />
         </View>
       )
@@ -43,10 +46,20 @@ class DeckList extends React.Component {
       <TouchableOpacity
         key={title}
         style={styles.deck}
-        onPress={() => navigation.navigate(
+        onPress={() => {
+          Animated.spring(this.animatedValue, {
+            toValue: .5
+          }).start()
+          Animated.spring(this.animatedValue, {
+            toValue: 1,
+            friction: 3,
+            tension: 40
+          }).start()
+          navigation.navigate(
           'DeckScreen',
           { title, },
-        )}
+        )
+        }}
       >
         <Text style={styles.information}>
           {title}

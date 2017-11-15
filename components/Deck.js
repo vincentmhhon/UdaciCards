@@ -23,9 +23,10 @@ class Deck extends Component {
           Add Card
         </Button>
         <Button
-          onPress={() => {
-      
-          }}
+          onPress={() => navigation.navigate(
+            'QuizScreen',
+            { title, },
+          )}
         >
           Start Quiz
         </Button>
