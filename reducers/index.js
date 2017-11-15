@@ -16,11 +16,11 @@ export default function rootReducer(decks = {}, action) {
       return {
         ...decks,
         [action.title]: {
-          ...decks[action.title],
-          questions: [...state[action.title].questions, action.card]
+          title: action.title,
+          questions: [...decks[action.title].questions, action.card]
         }
       }
     default:
       return decks
-   }
+  }
 }
