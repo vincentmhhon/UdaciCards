@@ -7,6 +7,7 @@ export function getDecks() {
       .then(decks => {
         return decks !== null ? JSON.parse(decks) : {}
       })
+    console.log("API " +JSON.stringify(decks))
     return decks
   }
   catch (error) {

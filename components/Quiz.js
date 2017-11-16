@@ -84,7 +84,7 @@ class Quiz extends React.Component {
       )
     } else {
       return (
-        <View>
+        <View style={commonStyles.container}>
           <Text style={commonStyles.title}>
             Great! You correctly answer {this.state.correctCount} {this.state.correctCount>1?'questions':'question'} out of {questions.length} questions
           </Text>

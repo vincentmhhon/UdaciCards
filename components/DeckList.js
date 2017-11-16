@@ -6,9 +6,6 @@ import colors from '../utils/colors'
 import AddButton from './AddButton'
 
 class DeckList extends React.Component {
-  componentWillMount() {
-    this.props.getDecks()
-  }
 
   componentDidMount() {
     this.animatedValue = new Animated.Value(1);
@@ -17,11 +14,12 @@ class DeckList extends React.Component {
   render() {
     const { navigation } = this.props
     const { decks } = this.props
+    console.log("HAHAd " + JSON.stringify(decks))
       return (
         <View
           style={styles.container}
         >
-          {decks.length > 0 ? this.renderDecks(decks) : this.renderEmpty()}
+          {decks.length >= 1 ? this.renderDecks(decks) : this.renderEmpty()}
           <AddButton
             onPress={() => {
               navigation.navigate(
@@ -71,7 +69,7 @@ class DeckList extends React.Component {
     return (
       <FlatList
         contentContainerStyle={{backgroundColor: colors.tan}}
-        data={decks.sort((a, b) => a.title < b.title)}
+        data={decks}
         renderItem={this.renderDeck}
         keyExtractor={(item, index) => item.title}
         ListEmptyComponent={this.renderEmpty}
