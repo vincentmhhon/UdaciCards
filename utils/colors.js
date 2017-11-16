@@ -8,6 +8,7 @@ const colors = {
   yellow: "#d1d306",
   purple: "#7536d3",
   white: "#FFFFFF",
+  red: "#d3090b",
 };
 
 export default colors
