@@ -1,6 +1,5 @@
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
-
-Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+The project has been tested in IOS simulator (IOS11) and LG G5 mobile phone (Android 7.1)
 
 ## Table of Contents
 
