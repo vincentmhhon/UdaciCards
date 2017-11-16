@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { View } from 'react-native'
+import { StyleSheet, Platform, View } from 'react-native'
 import MainNavigator from './components/MainNavigator'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -9,7 +9,7 @@ import { Constants } from 'expo'
 import colors from './utils/colors'
 
 class App extends React.Component {
-  
+
   render() {
     let store = createStore(
       rootReducer,
@@ -17,7 +17,7 @@ class App extends React.Component {
     )
     return (
       <Provider store={store}>
-        <View style={{flex: 1, paddingTop: Constants.statusBarHeight}}>
+        <View style={styles.container}>
           <MainNavigator style={{backgroundColor: colors.tan }} />
         </View>
       </Provider>
@@ -25,5 +25,11 @@ class App extends React.Component {
   }
 }
 
-export default App
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: (Platform.OS === 'ios') ? 0 : Constants.statusBarHeight,
+  },
+});
 
+export default App

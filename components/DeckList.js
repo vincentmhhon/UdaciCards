@@ -5,8 +5,6 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity, Animated } from 're
 import colors from '../utils/colors'
 import AddButton from './AddButton'
 
-import "redux"; // 3.7.2
-
 class DeckList extends React.Component {
   componentWillMount() {
     this.props.getDecks()
