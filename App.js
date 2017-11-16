@@ -7,9 +7,13 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import { Constants } from 'expo'
 import colors from './utils/colors'
+import { setLocalNotification } from './utils/helpers'
 
 class App extends React.Component {
-
+  componentDidMount() {
+    setLocalNotification()
+  }
+  
   render() {
     let store = createStore(
       rootReducer,

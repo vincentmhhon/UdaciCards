@@ -3,13 +3,10 @@ export const DECK_STORAGE_KEY = 'CARDS:DECKS'
 
 export function getDecks() {
   try {
-    console.log("getDecks")
     const decks = AsyncStorage.getItem(DECK_STORAGE_KEY)
       .then(decks => {
         return decks !== null ? JSON.parse(decks) : {}
       })
-
-    console.log(decks)
     return decks
   }
   catch (error) {

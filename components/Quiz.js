@@ -5,6 +5,7 @@ import Button from './Button'
 import { NavigationActions } from 'react-navigation'
 import colors from "../utils/colors"
 import commonStyles from '../utils/commonStyles'
+import { clearLocalNotification, setLocalNotification} from '../utils/helpers'
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -15,7 +16,10 @@ class Quiz extends React.Component {
       correctCount: 0,
     }
   }
-
+  componentDidMount() {
+    clearLocalNotification().then(setLocalNotification)
+  }
+  
   _toggleQuestionAnswer = () => {
     this.setState((prevState) => ({
       showAnswer: !prevState.showAnswer,
@@ -117,15 +121,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
     marginTop: 10,
-  },
-});
-
-export default connect(mapStateToProps)(Quiz)
-const styles = StyleSheet.create({
-  ToggleQuestionAnswer: {
-    fontSize: 24,
-    backgroundColor: colors.red,
-    alignItems: 'center'
   },
 });
 

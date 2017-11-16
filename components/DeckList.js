@@ -17,9 +17,6 @@ class DeckList extends React.Component {
   render() {
     const { navigation } = this.props
     const { decks } = this.props
-    console.log("list decks e" + decks)
-    console.log(decks.length)
-    console.log(JSON.stringify(decks).length)
       return (
         <View
           style={styles.container}
