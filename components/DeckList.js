@@ -15,8 +15,7 @@ class DeckList extends React.Component {
     const { navigation } = this.props
     const { decks } = this.props
     const decksArray = Object.keys(decks).map(key => decks[key])
-    console.log("AA " + JSON.stringify(decksArray))
-    console.log("HAHAd " + JSON.stringify(decks))
+
       return (
         <View
           style={styles.container}
