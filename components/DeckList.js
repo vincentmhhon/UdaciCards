@@ -14,12 +14,14 @@ class DeckList extends React.Component {
   render() {
     const { navigation } = this.props
     const { decks } = this.props
+    const decksArray = Object.keys(decks).map(key => decks[key])
+    console.log("AA " + JSON.stringify(decksArray))
     console.log("HAHAd " + JSON.stringify(decks))
       return (
         <View
           style={styles.container}
         >
-          {decks.length >= 1 ? this.renderDecks(decks) : this.renderEmpty()}
+          {decksArray.length >= 1 ? this.renderDecks(decksArray) : this.renderEmpty()}
           <AddButton
             onPress={() => {
               navigation.navigate(
@@ -66,6 +68,7 @@ class DeckList extends React.Component {
   }
 
   renderDecks = (decks) => {
+
     return (
       <FlatList
         contentContainerStyle={{backgroundColor: colors.tan}}
@@ -89,7 +92,8 @@ class DeckList extends React.Component {
 
 const mapStateToProps = (decks) => {
   return {
-    decks: Object.keys(decks).map(key => decks[key]),
+    //decks: Object.keys(decks).map(key => decks[key]),
+    decks,
   }
 }
 

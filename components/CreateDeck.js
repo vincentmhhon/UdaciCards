@@ -1,7 +1,6 @@
 import React from 'react'
 import { Alert, View, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { createDeck } from '../actions'
 import  Button from './Button'
 import commonStyles from '../utils/commonStyles'
@@ -26,7 +25,6 @@ class CreateDeck extends React.Component {
     else {
       createDeck(title)
       this.setState({title: ''})
-      this.props.navigation.dispatch(NavigationActions.back())
     }
   }
 

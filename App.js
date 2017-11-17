@@ -15,7 +15,7 @@ class App extends React.Component {
   }
   
   render() {
-    let store = createStore(
+    const store = createStore(
       rootReducer,
       applyMiddleware(thunk),
     )
