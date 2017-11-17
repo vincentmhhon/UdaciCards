@@ -68,16 +68,8 @@ class CreateCard extends React.Component {
 }
 
 const mapStateToProps = (question, answer) => ({
-  question: question,
-  answer: answer,
+  question,
+  answer,
 })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createCard: (title, question, answer) => {
-      dispatch(createCard(title, question, answer))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCard)
+export default connect(mapStateToProps, {createCard})(CreateCard)

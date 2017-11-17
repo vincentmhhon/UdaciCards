@@ -97,14 +97,6 @@ const mapStateToProps = (decks) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getDecks: () => {
-      dispatch(getDecks())
-    }
-  }
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -133,4 +125,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckList)
+export default connect(mapStateToProps, {getDecks})(DeckList)
