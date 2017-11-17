@@ -38,13 +38,14 @@ class CreateCard extends React.Component {
     const { question, answer } = this.state
     return (
       <KeyboardAvoidingView behaviour='padding' style={commonStyles.container}>
-        <Text style={commonStyles.title}>
+        <Text style={commonStyles.title} >
           Question
         </Text>
         <TextInput
           style={commonStyles.input}
           value={question}
           onChangeText={this._onChangeQuestionText}
+          underlineColorAndroid={'transparent'}
         />
         <Text style={commonStyles.title}>
           Answer
@@ -53,6 +54,7 @@ class CreateCard extends React.Component {
           style={commonStyles.input}
           value={answer}
           onChangeText={this._onChangeAnswerText}
+          underlineColorAndroid={'transparent'}
         />
         <Button
           onPress={() => {
