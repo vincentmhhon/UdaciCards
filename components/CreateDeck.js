@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, View, Text, TextInput } from 'react-native'
+import { Alert, KeyboardAvoidingView, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { createDeck } from '../actions'
 import  Button from './Button'
@@ -35,8 +35,7 @@ class CreateDeck extends React.Component {
     const { title } = this.state
     return (
 
-      <View
-        style={commonStyles.container}
+      <KeyboardAvoidingView behaviour='padding' style={commonStyles.container}
       >
         <Text style={commonStyles.title}>
           What is the title of your new deck?
@@ -55,7 +54,7 @@ class CreateDeck extends React.Component {
         >
           Submit
         </Button>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

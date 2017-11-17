@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-export const DECK_STORAGE_KEY = 'CARDS:DECKS'
+export const DECK_STORAGE_KEY = 'CARDSDECKS'
 
 export function getDecks() {
   try {
@@ -7,7 +7,6 @@ export function getDecks() {
       .then(decks => {
         return decks !== null ? JSON.parse(decks) : {}
       })
-    console.log("API " +JSON.stringify(decks))
     return decks
   }
   catch (error) {

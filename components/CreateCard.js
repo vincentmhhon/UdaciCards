@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { KeyboardAvoidingView, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { createCard } from '../actions'
@@ -37,7 +37,7 @@ class CreateCard extends React.Component {
 
     const { question, answer } = this.state
     return (
-      <View style={commonStyles.container}>
+      <KeyboardAvoidingView behaviour='padding' style={commonStyles.container}>
         <Text style={commonStyles.title}>
           Question
         </Text>
@@ -62,7 +62,7 @@ class CreateCard extends React.Component {
         >
           Submit
         </Button>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
