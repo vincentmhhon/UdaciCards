@@ -1,7 +1,5 @@
 import * as api from '../utils/api'
-export const GET_DECKS = "GET_DECKS"
-export const CREATE_DECK = "CREATE_DECK"
-export const CREATE_CARD = "CREATE_CARD"
+import {GET_DECKS, CREATE_CARD, CREATE_DECK} from "./types";
 
 export const getDecks = () => (dispatch) => (
   api

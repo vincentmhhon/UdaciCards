@@ -1,4 +1,4 @@
-import {GET_DECKS, CREATE_DECK, CREATE_CARD} from '../actions'
+import {GET_DECKS, CREATE_DECK, CREATE_CARD} from '../actions/types'
 
 export default function rootReducer(decks = {}, action) {
   switch(action.type) {
