@@ -37,7 +37,7 @@ class CreateDeck extends React.Component {
 
       <KeyboardAvoidingView behaviour='padding' style={commonStyles.container}
       >
-        <Text style={commonStyles.title}>
+        <Text style={commonStyles.title} >
           What is the title of your new deck?
         </Text>
         <TextInput
@@ -45,6 +45,7 @@ class CreateDeck extends React.Component {
           placeholder='e.g. Grammar, Formula'
           value={title}
           onChangeText={this._onChangeTitleText}
+          underlineColorAndroid={'transparent'}
         />
         <Button
           onPress={() => {
