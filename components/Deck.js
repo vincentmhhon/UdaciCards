@@ -7,8 +7,7 @@ import commonStyles from '../utils/commonStyles'
 class Deck extends Component {
   
   render() {
-    const { navigation, deck } = this.props
-    const { title } = deck
+    const { navigation, title } = this.props
     return (
       <View style={commonStyles.container}>
         <Text style={commonStyles.title}>
@@ -35,9 +34,9 @@ class Deck extends Component {
   }
 }
 
-const mapStateToProps = (decks, {navigation}) => {
+const mapStateToProps = (title, {navigation}) => {
   return {
-    deck: decks[navigation.state.params['title']],
+    title: navigation.state.params['title'],
     navigation
   }
 }

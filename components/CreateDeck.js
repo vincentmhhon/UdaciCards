@@ -15,7 +15,7 @@ class CreateDeck extends React.Component {
 
   _save = () => {
     const { title } = this.state
-    const { decks, createDeck } = this.props
+    const { decks, createDeck, navigation } = this.props
     if (title in decks) {
       Alert.alert(
         'Error',
@@ -25,6 +25,10 @@ class CreateDeck extends React.Component {
     else {
       createDeck(title)
       this.setState({title: ''})
+      navigation.navigate(
+        'DeckScreen',
+        { title, },
+      )
     }
   }
 

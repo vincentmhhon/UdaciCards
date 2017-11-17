@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-export const DECK_STORAGE_KEY = 'CARDSDECKS'
+export const DECK_STORAGE_KEY = 'CARDSDECKSKEY'
 
 export function getDecks() {
   try {
