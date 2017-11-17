@@ -19,8 +19,11 @@ It was with [Create React Native App](https://github.com/react-community/create-
 This project relies Yarn to resolve dependencies
 
 Start the project by the following steps:
+
 cd UdaciCards
+
 yarn install
+
 yarn start
 
 ## Tested environment
